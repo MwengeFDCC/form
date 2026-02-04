@@ -175,13 +175,23 @@ body {
   outline: none;
   box-shadow: 0 0 0 4px rgba(74, 125, 255, 0.35);
 }
+
+.card img {
+  display: block;        /* allows margin auto to work */
+  width: 50%;
+  max-height: 120px;     /* controls image height */
+  object-fit: contain;
+  margin: 0 auto 14px;  /* 👈 center horizontally + space below */
+}
+
+
     </style>
 </head>
 <body>
     <div class ="container">
         <form  id="contactform" class="card">
             <h2>Contact Form</h2>
-             <img src="Images/contact2.jpg" alt="Contact image">
+             <img src="images/globe.jpeg" alt="Contact image">
             <label for ="fullname">Fullname</label>
             <input type="text" id="fullname" name="fullname" placeholder="Enter your fulname" required>
 
