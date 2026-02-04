@@ -1,37 +1,210 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+    <style>
+       /* 1) Reset & consistent sizing
+   - Makes padding/border NOT break your layout widths
+   - Applies to everything */
+* {
+  box-sizing: border-box;
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+/* 2) Page base style
+   - Removes default spacing
+   - Sets a modern readable font
+   - Gives a soft background */
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f4f6fb;
+  color: #1f2937;
+}
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+/* 3) Center the form on the page
+   - min-height: 100vh makes body take full screen height
+   - display:flex centers content
+   - padding keeps it nice on small screens */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;     /* center vertically */
+  justify-content: center; /* center horizontally */
+  padding: 24px;
+}
+
+/* 4) The “card” (form box)
+   - max-width keeps it from becoming too wide
+   - background white + shadow = professional card look
+   - border-radius makes smooth corners
+   - display:flex + column stacks items vertically */
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 5) Title styling
+   - center text, remove default spacing issues */
+.card h2 {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+
+/* 6) Labels (field names)
+   - display:block ensures label sits on its own line
+   - margins create spacing
+   - font-weight improves readability */
+.card label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* 7) Inputs + Textarea base look
+   - width:100% to fill the card
+   - padding = comfortable typing area
+   - border + radius = smooth professional edges
+   - outline:none removes ugly default highlight */
+.card input,
+.card textarea {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid #cfd6e4;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  background: #ffffff;
+}
+
+/* 8) Textarea specific
+   - min-height makes it feel like “message box”
+   - resize:none stops user from stretching it ugly */
+.card textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+/* 9) Focus effect (when you click inside)
+   - border-color changes to show active field
+   - box-shadow gives a soft glow (modern UX) */
+.card input:focus,
+.card textarea:focus {
+  border-color: #4a7dff;
+  box-shadow: 0 0 0 4px rgba(74, 125, 255, 0.18);
+}
+
+/* 10) Placeholder color (hint text)
+   - makes it softer than real text */
+.card input::placeholder,
+.card textarea::placeholder {
+  color: #8a94a6;
+}
+
+/* 11) File input: small improvement
+   - adds top padding so it doesn’t look squeezed */
+.card input[type="file"] {
+  padding: 10px;
+}
+
+/* 12) Improve spacing after file input button in some browsers */
+.card input[type="file"]::-webkit-file-upload-button {
+  margin-right: 10px;
+}
+
+/* 13) Responsive tweak (small screens)
+   - reduces padding a bit so form fits nicely */
+@media (max-width: 420px) {
+  .card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .card h2 {
+    font-size: 20px;
+  }
+}
+
+.card input[type="submit"] {
+  margin-top: 18px;             /* space above the button */
+  padding: 14px;
+  background: #4a7dff;          /* professional blue */
+  color: white;                 /* white text */
+  border: none;                 /* remove default border */
+  border-radius: 14px;          /* smooth rounded corners */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;              /* hand cursor */
+  transition: all 0.25s ease;   /* smooth animation */
+  width: 40%;
+
+  margin-left: auto;            /* 👈 center horizontally */
+  margin-right: auto;           /* 👈 center horizontally */
+}
+
+
+
+/* 2) Hover effect (mouse over) */
+.card input[type="submit"]:hover {
+  background: #2f61f5;         /* darker blue */
+  transform: translateY(-2px); /* slight lift effect */
+  box-shadow: 0 10px 22px rgba(47, 97, 245, 0.35);
+}
+
+/* 3) Active (when clicked) */
+.card input[type="submit"]:active {
+  transform: translateY(0);    /* button presses down */
+  box-shadow: 0 6px 14px rgba(47, 97, 245, 0.30);
+}
+
+/* 4) Focus (keyboard navigation) */
+.card input[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(74, 125, 255, 0.35);
+}
+    </style>
 </head>
 <body>
-    <h1> <span lang="fr"> </span></h1>
+    <div class ="container">
+        <form  id="contactform" class="card">
+            <h2>Contact Form</h2>
+             <img src="Images/contact2.jpg" alt="Contact image">
+            <label for ="fullname">Fullname</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your fulname" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required >
+
+            <label for="contact">Contact</label>
+            <input type="tel" id="contact" name="contact" placeholder="Enter your telephone number" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+
+            <label for="file">Document</label>
+            <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png">
+
+            <label for="datetime">Submission date </label>
+            <input type="datetime-local" id="datetime" name="datetime" required>
+
+            <label for="submit">Submit</label>
+            <input type="submit" value="Send Form">
+
+
+        </form>
+    </div>
 </body>
 </html>
